@@ -500,7 +500,7 @@ export default function App() {
       const form = new FormData();
       if (isFile) form.append("file", textOrFile);
       else form.append("text", textOrFile);
-      const res = await fetch("http://localhost:5000/generate", { method:"POST", body:form });
+     const res = await fetch("https://studyai-project-production.up.railway.app/generate", { method:"POST", body:form });
       const data = await res.json();
       setResults(data);
     } catch {
