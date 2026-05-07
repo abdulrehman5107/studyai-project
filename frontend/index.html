@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyAI — Learn Smarter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      :root {
+        --bg: #050508;
+        --bg2: #0a0a12;
+        --surface: rgba(255,255,255,0.04);
+        --surface2: rgba(255,255,255,0.07);
+        --border: rgba(255,255,255,0.08);
+        --border2: rgba(255,255,255,0.14);
+        --text: #f0eff8;
+        --text2: #8b8a9e;
+        --text3: #5a5970;
+        --accent: #7c6fff;
+        --accent2: #ff6b9d;
+        --accent3: #06d6a0;
+        --gold: #ffd166;
+        --font-display: 'Bricolage Grotesque', sans-serif;
+        --font-mono: 'DM Mono', monospace;
+      }
+
+      html { font-size: 16px; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-display);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      #root { min-height: 100vh; }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
