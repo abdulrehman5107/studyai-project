@@ -110,6 +110,14 @@ def handle_request():
                 text = extract_text_from_pdf(io.BytesIO(file.read()))
             elif filename.endswith(".docx"):
                 text = extract_text_from_docx(io.BytesIO(file.read()))
+            elif filename.endswith(".pptx"):
+                from pptx import Presentation
+                prs = Presentation(io.BytesIO(file.read()))
+                text = ""
+                for slide in prs.slides:
+                    for shape in slide.shapes:
+                        if shape.has_text_frame:
+                            text += shape.text_frame.text + "\n"
             elif filename.endswith(".txt"):
                 text = file.read().decode("utf-8")
             else:
