@@ -45,7 +45,7 @@ Lecture Content:
 Return exactly this JSON structure:
 {{
   "summary": ["point 1", "point 2", "point 3", "point 4", "point 5"],
-  "notes": "# Topic Title\n\n## Section 1\n\nDetailed explanation of the first concept.\n\n- **Key term**: definition\n- **Key term 2**: definition\n\n## Section 2\n\nAnother detailed paragraph.\n\n- bullet point 1\n- bullet point 2",
+  "notes": "# Topic Title\\n\\n## Section 1\\n\\nDetailed explanation here.\\n\\n- **Key term**: definition\\n\\n## Section 2\\n\\nMore explanation here.",
   "flashcards": [
     {{"question": "Q1", "answer": "A1"}},
     {{"question": "Q2", "answer": "A2"}},
@@ -65,18 +65,17 @@ Return exactly this JSON structure:
     }}
   ],
   "practice_questions": [
-    {{"question": "Short answer Q1", "sample_answer": "Brief 1-2 sentence answer"}},
-    {{"question": "Short answer Q2", "sample_answer": "Brief 1-2 sentence answer"}},
-    {{"question": "Short answer Q3", "sample_answer": "Brief 1-2 sentence answer"}},
-    {{"question": "Long answer Q4", "sample_answer": "A detailed multi-sentence answer that explains the concept thoroughly with examples and elaboration covering multiple aspects of the topic."}},
-    {{"question": "Long answer Q5", "sample_answer": "A detailed multi-sentence answer that explains the concept thoroughly with examples and elaboration covering multiple aspects of the topic."}}
+    {{"question": "Short Q1", "sample_answer": "Brief answer"}},
+    {{"question": "Short Q2", "sample_answer": "Brief answer"}},
+    {{"question": "Short Q3", "sample_answer": "Brief answer"}},
+    {{"question": "Long Q4", "sample_answer": "A detailed multi-sentence answer explaining the concept thoroughly with examples."}},
+    {{"question": "Long Q5", "sample_answer": "A detailed multi-sentence answer explaining the concept thoroughly with examples."}}
   ]
 }}
 
 Rules:
 - Include exactly 10 MCQs.
-- For notes: write DETAILED structured notes as a single string with real newline characters (\n). Use ## for section headings, **term** for bold key terms, and - for bullet points. Write at least 400 words covering all major concepts. Each section needs 2-3 paragraphs of explanation not just bullet lists.
-- For practice_questions: include 3 short questions (sample_answer under 100 chars) and 2 long questions (sample_answer over 150 chars).
+- For notes: use \\n for newlines, ## for headings, **term** for bold. Write at least 400 words.
 - Return only valid JSON, nothing else."""
 
     response = client.chat.completions.create(
@@ -95,11 +94,11 @@ Rules:
         if raw.startswith("json"):
             raw = raw[4:]
     raw = raw.strip()
-try:
-    return json.loads(raw)
-except:
-    raw = " ".join(raw.splitlines())
-    return json.loads(raw)
+    try:
+        return json.loads(raw)
+    except Exception:
+        raw = " ".join(raw.splitlines())
+        return json.loads(raw)
 
 def handle_request():
     try:
