@@ -95,6 +95,10 @@ Rules:
         if raw.startswith("json"):
             raw = raw[4:]
     raw = raw.strip()
+try:
+    return json.loads(raw)
+except:
+    raw = " ".join(raw.splitlines())
     return json.loads(raw)
 
 def handle_request():
